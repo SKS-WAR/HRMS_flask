@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            HRMS
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    </head>
+    <body>
+    <div id="wrapper">
+        
+        <div id="sidebar-wrapper" >
+            <ul class="sidebar-nav">
+                <li><div>
+                        <p>HR</p>
+                        <a href="#">{{ session['user'] }}</a>
+                    </div>
+                    <hr>
+                </li>
+                <li><a href="/home">Dashboard</a></li>
+                <li>
+                    <div>
+                        Employee
+                        <ul>
+                            <li><a href="/createEmployee">Create</a></li>
+                            <li><a href="/createEmployee">Search</a></li>
+                            <li><a href="/createEmployee">Update</a></li>
+                            <li><a href="/createEmployee">Delete</a></li>
+                            <li><a href="/createEmployee">View all</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        Timing
+                        <ul>
+                            <li><a href="#">DAILY IN / OUT</a></li>
+                            <li><a href="#">LUNCH IN / OUT</a></li>
+                            <li><a href="#">TEA TIME IN / OUT</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="/logout">Logout</a></li>
+                
+            </ul>
+        </div>
+        <div id="page-context-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#" class="btn btn-success" id="menu-toggle">Toggle Menu</a>
+                                    {% with messages = get_flashed_messages(with_categories=true) %}
+                                        {% if messages %}
+                                            {% for category,message in messages %}
+                                                <div class="{{ category }}">{{ message }}</div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
+                        <br>
+                        {% block content %} {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#menu-toggle").click(function(e){
+           e.preventDefault();
+            $("#wrapper").toggleClass('menuDisplayed');
+        });
+    </script>
+    </body>
+</html>
