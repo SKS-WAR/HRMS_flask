@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Login Page</title>
+    </head>
+    <body style="background: #009688">
+        <br>
+        <br>
+        <h2 style="color: #fff"><center>HR Management System</center></h2><br><hr><br>
+        <div class="container" style="color: #fff">
+            <center>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            </center>
+        </div>
+        <h2 style="color: #fff"><center>LOGIN</center></h2>
+        <br>
+        <br>
+        <form action="#" method="post">
+        <div>
+            <center><label for="uname" style="color: #fff"><h3>Username:</h3></label></center>
+            <center><input type="text" id="uname" width="30" style="color: #fff;font-size: 16px" name="uname" placeholder="Enter the username" required class="input"></center>
+        </div>
+        <br>
+        <br>
+        <div>
+            <center><label for="password" style="color: #fff"><h3>Password:</h3></label></center>
+            <center><input type="password" id="password" width="30" style="color: #000;font-size: 16px" name="password" placeholder="Password" required class="input"></center>
+        </div>
+        <br>
+        <br>
+
+            <center><button type="reset" style="font-size: 15px; text-transform: uppercase; color: #fff; padding: 9px 12px;background-color: #00695C;border: none;border-radius: 5px;cursor: pointer;transition: all 0.3s ease 0s;">Reset</button>
+            <button type="submit" style="font-size: 15px; text-transform: uppercase; color: #fff; padding: 9px 12px;background-color: #00695C;border: none;border-radius: 5px;cursor: pointer;transition: all 0.3s ease 0s;">Login</button></center>
+        </form>
+        <br>
+        <br>
+        <hr>
+    </body>
+</html>
