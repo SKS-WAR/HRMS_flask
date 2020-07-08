@@ -1,0 +1,60 @@
+{% extends "home.html" %} {% block content %}
+
+    Employee Registration
+    
+    <form action="#" method="post">
+        <table>
+            <tr>
+                <td><label>Employee EID number*</label></td>
+                <td><input type="number" name="eid" required><br><td>
+            </tr>
+            <tr>
+                <td><label>Employee First Name*</label></td>
+                <td><input type="text" name="fname" id="fname" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Employee Last Name*</label></td>
+                <td><input type="text" name="lname" id="lname" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Address*</label></td>
+                <td><input type="text" name="adrs" id="adrs" required><br></td>
+            </tr>
+            <tr>
+                <td><label>DOB*</label></td>
+                <td><input type="date" name="age" id="age" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Contact number*</label></td>
+                <td><input type="number" name="c_no" id="c_no" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Gender*</label></td>
+                <td><select name="gender" id="gender" required >
+                    <option value="Male" >Male</option>
+                    <option value="Female" >Female</option>
+                </select><br></td>
+            </tr>
+            <tr>
+                <td><label>Position*</label></td>
+                <td><input type="text" name="post" id="post" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Photo*</label></td>
+                <td><input type="file" name="p_photo" id="p_photo" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Resume*</label></td>
+                <td><input type="file" name="resume" id="resume" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Date of Joining*</label></td>
+                <td><input type="date" name="doj" id="doj" required><br></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit"></td>
+                <td><button type="reset">Reset</button></td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}
