@@ -35,24 +35,45 @@ class employee(db.Model):
     tadrs = db.Column(db.String(100))
     dob = db.Column(db.String(100))
     c_no = db.Column(db.String(100))
+    email = db.Column(db.String(100))
     gender = db.Column(db.String(100))
     dept = db.Column(db.String(100))    
     deg = db.Column(db.String(100))
-    photo = db.Column(db.String(100))
+    blood_group = db.Column(db.String(100))
+    edu_qua = db.Column(db.String(100))
+    cert = db.Column(db.LargeBinary)
+    ani = db.Column(db.String(100))
+    religion = db.Column(db.String(100))
+    driving_linc = db.Column(db.String(100))
+    voter_id = db.Column(db.String(100))
+    adhaar = db.Column(db.String(100))
+    material_status = db.Column(db.String(100))
+    photo = db.Column(db.LargeBinary)
     resume = db.Column(db.LargeBinary)
-    doj = db.Column(db.LargeBinary)
-    def __init__(self,eid,fname,lname,padrs,tadrs,dob,c_no,gender,dept,deg,photo,resume,doj):
+    doj = db.Column(db.String(100))
+    def __init__(self,eid,fname,lname,padrs,tadrs,dob,c_no,email,gender,dept,deg,
+                 blood_group,edu_qua,cert,ani,religion,driving_linc,voter_id,adhaar,
+                 material_status,photo,resume,doj):
         self.eid = eid
         self.fname = fname
         self.lname = lname
         self.padrs = padrs
         self.tadrs = tadrs
         self.dob = dob
-        self.ws_doj = doj
         self.c_no = c_no
+        self.email = email
         self.gender = gender
         self.dept = dept
         self.deg = deg
+        self.blood_group = blood_group
+        self.edu_qua = edu_qua
+        self.cert = cert
+        self.ani = ani
+        self.religion = religion
+        self.driving_linc = driving_linc
+        self.voter_id = voter_id
+        self.adhaar = adhaar
+        self.material_status = material_status
         self.photo = photo
         self.resume = resume
         self.doj = doj
