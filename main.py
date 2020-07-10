@@ -31,8 +31,13 @@ class employee(db.Model):
     eid = db.Column(db.Integer)
     fname = db.Column(db.String(100))
     lname = db.Column(db.String(100))
+    father_name = db.Column(db.String(100))
     padrs = db.Column(db.String(100))
+    pcity = db.Column(db.String(100))
+    p_pin = db.Column(db.String(100))
     tadrs = db.Column(db.String(100))
+    tcity = db.Column(db.String(100))
+    t_pin = db.Column(db.String(100))
     dob = db.Column(db.String(100))
     c_no = db.Column(db.String(100))
     email = db.Column(db.String(100))
@@ -51,14 +56,19 @@ class employee(db.Model):
     photo = db.Column(db.LargeBinary)
     resume = db.Column(db.LargeBinary)
     doj = db.Column(db.String(100))
-    def __init__(self,eid,fname,lname,padrs,tadrs,dob,c_no,email,gender,dept,deg,
-                 blood_group,edu_qua,cert,ani,religion,driving_linc,voter_id,adhaar,
+    def __init__(self,eid,fname,lname,father_name,padrs,pcity,p_pin,tadrs,tcity,t_pin,dob,c_no,email,
+                 gender,dept,deg,blood_group,edu_qua,cert,ani,religion,driving_linc,voter_id,adhaar,
                  material_status,photo,resume,doj):
         self.eid = eid
         self.fname = fname
         self.lname = lname
+        self.father_name = father_name
         self.padrs = padrs
+        self.pcity = pcity
+        self.p_pin = p_pin
         self.tadrs = tadrs
+        self.tcity = tcity
+        self.t_pin = t_pin
         self.dob = dob
         self.c_no = c_no
         self.email = email
