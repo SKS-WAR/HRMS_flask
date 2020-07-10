@@ -2,32 +2,61 @@
 
     Employee Registration
     
-    <form action="#" method="post">
+    <form action="/createEmployee" method="post">
         <table>
             <tr>
                 <td><label>Employee EID number*</label></td>
                 <td><input type="number" name="eid" required><br><td>
             </tr>
             <tr>
-                <td><label>Employee First Name*</label></td>
+                <td><label>First Name*</label></td>
                 <td><input type="text" name="fname" id="fname" required><br></td>
             </tr>
             <tr>
-                <td><label>Employee Last Name*</label></td>
+                <td><label>Last Name*</label></td>
                 <td><input type="text" name="lname" id="lname" required><br></td>
             </tr>
             <tr>
-                <td><label>Address*</label></td>
-                <td><input type="text" name="adrs" id="adrs" required><br></td>
+                <td><label>Father's Name*</label></td>
+                <td><input type="text" name="father_name" id="father_name" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Permanent Address*</label></td>
+                <td><input type="text" name="padrs" id="padrs" required><br></td>
+            </tr>
+            <tr>
+                <td><label>City*</label></td>
+                <td><input type="text" name="pcity" id="pcity" required><br></td>
+            </tr>
+            <tr>
+                <td><label>PIN*</label></td>
+                <td><input type="text" name="p_pin" id="p_pin" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Address for Correspondence*</label></td>
+                <td><input type="text" name="tadrs" id="tadrs" required><br></td>
+            </tr>
+            <tr>
+                <td><label>City*</label></td>
+                <td><input type="text" name="tcity" id="tcity" required><br></td>
+            </tr>
+            <tr>
+                <td><label>PIN*</label></td>
+                <td><input type="text" name="t_pin" id="t_pin" required><br></td>
             </tr>
             <tr>
                 <td><label>DOB*</label></td>
-                <td><input type="date" name="age" id="age" required><br></td>
+                <td><input type="date" name="dob" id="dob" required><br></td>
             </tr>
             <tr>
                 <td><label>Contact number*</label></td>
                 <td><input type="number" name="c_no" id="c_no" required><br></td>
             </tr>
+            <tr>
+                <td><label>email*</label></td>
+                <td><input type="email" name="email" id="email" required><br></td>
+            </tr>
+            
             <tr>
                 <td><label>Gender*</label></td>
                 <td><select name="gender" id="gender" required >
@@ -35,13 +64,55 @@
                     <option value="Female" >Female</option>
                 </select><br></td>
             </tr>
+            
             <tr>
-                <td><label>Position*</label></td>
-                <td><input type="text" name="post" id="post" required><br></td>
+                <td><label>Department*</label></td>
+                <td><input type="text" name="dept" id="dept" required><br></td>
+            </tr>
+            
+            <tr>
+                <td><label>Designation*</label></td>
+                <td><input type="text" name="deg" id="deg" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Blood Group*</label></td>
+                <td><input type="text" name="blood_group" id="blood_group" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Educational Qualifications*</label></td>
+                <td><input type="text" name="edu_qua" id="edu_qua" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Certificates*</label></td>
+                <td><input type="file" name="cert" id="cert" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Aniversary*</label></td>
+                <td><input type="date" name="ani" id="ani" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Religion*</label></td>
+                <td><input type="text" name="religion" id="religion" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Driving Licence*</label></td>
+                <td><input type="text" name="driving_linc" id="driving_linc" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Voter ID*</label></td>
+                <td><input type="text" name="voter_id" id="voter_id" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Adhaar*</label></td>
+                <td><input type="text" name="adhaar" id="adhaar" required><br></td>
             </tr>
             <tr>
                 <td><label>Photo*</label></td>
                 <td><input type="file" name="p_photo" id="p_photo" required><br></td>
+            </tr>
+            <tr>
+                <td><label>Material Status*</label></td>
+                <td><input type="text" name="material_status" id="material_status" required><br></td>
             </tr>
             <tr>
                 <td><label>Resume*</label></td>
