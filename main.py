@@ -142,7 +142,13 @@ def home():
     
 @app.route("/createEmployee",methods=["POST","GET"])
 def createEmployee():
-    return render_template('createEmployee.html')
+    if 'user' in session :
+        pass
+    if request.method == "POST":
+        ## TODO : retrive all the information about the employee and store it in db
+        return f"Successfully submitted the form"
+    else:
+        render_template('createEmployee.html')
     
 @app.route("/logout")
 def logout(): 
