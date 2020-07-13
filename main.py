@@ -145,9 +145,42 @@ def createEmployee():
     if 'user' in session :
         pass
     if request.method == "POST":
-        
-        ## TODO : retrive all the information about the employee and store it in db
-        return f"Successfully submitted the form"
+        eid = request.form['eid']
+        fname = request.form['fname']
+        lname = request.form['lname']
+        father_name = request.form['father_name']
+        padrs = request.form['padrs']
+        pcity = request.form['pcity']
+        p_pin = request.form['p_pin']
+        tadrs = request.form['tadrs']
+        tcity = request.form['tcity']
+        t_pin = request.form['t_pin']
+        dob = request.form['dob']
+        c_no = request.form['c_no']
+        email = request.form['email']
+        gender = request.form['gender']
+        dept = request.form['dept']
+        deg = request.form['deg']
+        blood_group = request.form['blood_group']
+        edu_qua = request.form['edu_qua']
+        cert = request.files['cert']
+        ani = request.form['ani']
+        religion = request.form['religion']
+        driving_linc = request.form['driving_linc']
+        voter_id = request.form['voter_id']
+        adhaar = request.form['adhaar']
+        photo = request.files['photo']
+        material_status = request.form['material_status']
+        resume = request.files['resume']
+        doj = request.form['doj']
+        new_employee = employee(eid, fname, lname, father_name, padrs, pcity, p_pin,
+         tadrs, tcity, t_pin, dob, c_no, email, gender, dept, deg, blood_group,
+          edu_qua, cert.read(), ani, religion, driving_linc, voter_id, adhaar, material_status,
+           photo.read(), resume.read(), doj)
+        db.session.add(new_employee)
+        db.session.commit()
+        flash("Successfully Added the New Employee",category='success')
+        return render_template('createEmployee.html')
     else:
         return render_template('createEmployee.html')
     
