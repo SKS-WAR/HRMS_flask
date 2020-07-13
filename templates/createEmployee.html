@@ -1,9 +1,9 @@
 {% extends "home.html" %} {% block content %}
 <div class="container">
     <h3>Employee Registration</h3>
-    <form action="/createEmployee" method="post" class="center">
-      <br />
-      <br />
+    <form action="/createEmployee" method="post" class="center" enctype="multipart/form-data">
+      <br/>
+      <br/>
       <div class="form-group">
         <label>Employee EID number*</label>
         <input type="number" name="eid" required /><br />
@@ -147,7 +147,7 @@
       </div>
       <div class="form-group">
         <label>Photo*</label>
-        <input type="file" name="p_photo" id="p_photo" required /><br />
+        <input type="file" name="photo" id="photo" required /><br />
       </div>
       <div class="form-group">
         <label>Material Status*</label>
