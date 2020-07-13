@@ -145,10 +145,11 @@ def createEmployee():
     if 'user' in session :
         pass
     if request.method == "POST":
+        
         ## TODO : retrive all the information about the employee and store it in db
         return f"Successfully submitted the form"
     else:
-        render_template('createEmployee.html')
+        return render_template('createEmployee.html')
     
 @app.route("/logout")
 def logout(): 
