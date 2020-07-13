@@ -184,6 +184,10 @@ def createEmployee():
     else:
         return render_template('createEmployee.html')
     
+@app.route("/viewEmployees",methods=["POST","GET"])
+def viewEmployees():
+    return render_template('viewEmployees.html', employees = employee.query.filter_by().all())
+
 @app.route("/logout")
 def logout(): 
     session.pop('patient',None)
