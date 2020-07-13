@@ -1,131 +1,177 @@
 {% extends "home.html" %} {% block content %}
+<div class="container">
+    <h3>Employee Registration</h3>
+    <form action="/createEmployee" method="post" class="center">
+      <br />
+      <br />
+      <div class="form-group">
+        <label>Employee EID number*</label>
+        <input type="number" name="eid" required /><br />
+      </div>
 
-    Employee Registration
-    
-    <form action="/createEmployee" method="post">
-        <table>
-            <tr>
-                <td><label>Employee EID number*</label></td>
-                <td><input type="number" name="eid" required><br><td>
-            </tr>
-            <tr>
-                <td><label>First Name*</label></td>
-                <td><input type="text" name="fname" id="fname" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Last Name*</label></td>
-                <td><input type="text" name="lname" id="lname" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Father's Name*</label></td>
-                <td><input type="text" name="father_name" id="father_name" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Permanent Address*</label></td>
-                <td><input type="text" name="padrs" id="padrs" required><br></td>
-            </tr>
-            <tr>
-                <td><label>City*</label></td>
-                <td><input type="text" name="pcity" id="pcity" required><br></td>
-            </tr>
-            <tr>
-                <td><label>PIN*</label></td>
-                <td><input type="text" name="p_pin" id="p_pin" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Address for Correspondence*</label></td>
-                <td><input type="text" name="tadrs" id="tadrs" required><br></td>
-            </tr>
-            <tr>
-                <td><label>City*</label></td>
-                <td><input type="text" name="tcity" id="tcity" required><br></td>
-            </tr>
-            <tr>
-                <td><label>PIN*</label></td>
-                <td><input type="text" name="t_pin" id="t_pin" required><br></td>
-            </tr>
-            <tr>
-                <td><label>DOB*</label></td>
-                <td><input type="date" name="dob" id="dob" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Contact number*</label></td>
-                <td><input type="number" name="c_no" id="c_no" required><br></td>
-            </tr>
-            <tr>
-                <td><label>email*</label></td>
-                <td><input type="email" name="email" id="email" required><br></td>
-            </tr>
-            
-            <tr>
-                <td><label>Gender*</label></td>
-                <td><select name="gender" id="gender" required >
-                    <option value="Male" >Male</option>
-                    <option value="Female" >Female</option>
-                </select><br></td>
-            </tr>
-            
-            <tr>
-                <td><label>Department*</label></td>
-                <td><input type="text" name="dept" id="dept" required><br></td>
-            </tr>
-            
-            <tr>
-                <td><label>Designation*</label></td>
-                <td><input type="text" name="deg" id="deg" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Blood Group*</label></td>
-                <td><input type="text" name="blood_group" id="blood_group" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Educational Qualifications*</label></td>
-                <td><input type="text" name="edu_qua" id="edu_qua" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Certificates*</label></td>
-                <td><input type="file" name="cert" id="cert" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Aniversary*</label></td>
-                <td><input type="date" name="ani" id="ani" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Religion*</label></td>
-                <td><input type="text" name="religion" id="religion" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Driving Licence*</label></td>
-                <td><input type="text" name="driving_linc" id="driving_linc" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Voter ID*</label></td>
-                <td><input type="text" name="voter_id" id="voter_id" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Adhaar*</label></td>
-                <td><input type="text" name="adhaar" id="adhaar" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Photo*</label></td>
-                <td><input type="file" name="p_photo" id="p_photo" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Material Status*</label></td>
-                <td><input type="text" name="material_status" id="material_status" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Resume*</label></td>
-                <td><input type="file" name="resume" id="resume" required><br></td>
-            </tr>
-            <tr>
-                <td><label>Date of Joining*</label></td>
-                <td><input type="date" name="doj" id="doj" required><br></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Submit"></td>
-                <td><button type="reset">Reset</button></td>
-            </tr>
-        </table>
+      <div class="row">
+        <div class="col-lg-3">
+          <label>First Name*</label>
+          <input type="text" name="fname" id="fname" required /><br />
+        </div>
+        <div class="col-lg-3">
+          <label>Last Name*</label>
+          <input type="text" name="lname" id="lname" required /><br />
+        </div>
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Father's Name*</label>
+        <input
+          type="text"
+          name="father_name"
+          id="father_name"
+          required
+        /><br />
+      </div>
+
+      <div class="form-group">
+        <label>Permanent Address*</label>
+        <input type="text" name="padrs" id="padrs" required /><br />
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3">
+          <label>City*</label>
+          <input type="text" name="pcity" id="pcity" required /><br />
+        </div>
+
+        <div class="col-lg-3">
+          <label>PIN*</label>
+          <input type="text" name="p_pin" id="p_pin" required /><br />
+        </div>
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Address for Correspondence*</label>
+        <input type="text" name="tadrs" id="tadrs" required /><br />
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3">
+          <label>City*</label>
+          <input type="text" name="tcity" id="tcity" required /><br />
+        </div>
+        <div class="col-lg-3">
+          <label>PIN*</label>
+          <input type="text" name="t_pin" id="t_pin" required /><br />
+        </div>
+      </div>
+      <br />
+
+      <div class="form-group">
+        <label>DOB*</label>
+        <input type="date" name="dob" id="dob" required /><br />
+      </div>
+
+      <div class="form-group">
+        <label>Contact number*</label>
+        <input type="number" name="c_no" id="c_no" required /><br />
+      </div>
+
+      <div class="form-group">
+        <label>Email*</label>
+        <input type="email" name="email" id="email" required /><br />
+      </div>
+
+      <div class="form-group">
+        <label>Gender*</label>
+
+        <select name="gender" id="gender" required>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option> </select
+        ><br />
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3">
+          <label>Department*</label>
+          <input type="text" name="dept" id="dept" required /><br />
+        </div>
+        <div class="col-lg-3">
+          <label>Designation*</label>
+          <input type="text" name="deg" id="deg" required /><br />
+        </div>
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Blood Group*</label>
+
+        <input
+          type="text"
+          name="blood_group"
+          id="blood_group"
+          required
+        /><br />
+      </div>
+      <div class="form-group">
+        <label>Educational Qualifications*</label>
+        <input type="text" name="edu_qua" id="edu_qua" required /><br />
+      </div>
+      <div class="form-group">
+        <label>Certificates*</label>
+        <input type="file" name="cert" id="cert" required /><br />
+      </div>
+      <div class="form-group">
+        <label>Aniversary*</label>
+        <input type="date" name="ani" id="ani" required /><br />
+      </div>
+      <div class="form-group">
+        <label>Religion*</label>
+
+        <input type="text" name="religion" id="religion" required /><br />
+      </div>
+      <div class="form-group">
+        <label>Driving Licence*</label>
+
+        <input
+          type="text"
+          name="driving_linc"
+          id="driving_linc"
+          required
+        /><br />
+      </div>
+      <div class="form-group">
+        <label>Voter ID*</label>
+
+        <input type="text" name="voter_id" id="voter_id" required /><br />
+      </div>
+      <div class="form-group">
+        <label>Adhaar*</label>
+        <input type="text" name="adhaar" id="adhaar" required /><br />
+      </div>
+      <div class="form-group">
+        <label>Photo*</label>
+        <input type="file" name="p_photo" id="p_photo" required /><br />
+      </div>
+      <div class="form-group">
+        <label>Material Status*</label>
+
+        <input
+          type="text"
+          name="material_status"
+          id="material_status"
+          required
+        /><br />
+      </div>
+      <div class="form-group">
+        <label>Resume*</label>
+        <input type="file" name="resume" id="resume" required /><br />
+      </div>
+      <div class="form-group">
+        <label>Date of Joining*</label>
+        <input type="date" name="doj" id="doj" required /><br />
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Submit" />
+        <button type="reset">Reset</button>
+      </div>
+      <!-- </table> -->
     </form>
+  </div>
 {% endblock %}
