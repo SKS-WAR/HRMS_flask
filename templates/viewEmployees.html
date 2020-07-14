@@ -1,33 +1,36 @@
 {% extends "home.html" %} {% block content %}
 <div class="container">
   <h3>Employee table</h3>
-  <table border="1">
-      <tr>
-          <th>EID</th>
-          <th>Name</th>
-          <th>Contact No.</th>
-          <th>Email</th>
-          <th>Adhaar card</th>
-          <th>DOJ</th>
-          <th>Blood Group</th>
-          <th>Department</th>
-          <th>Designation</th>
-          <th>action</th>
-      </tr>
-      {% for emp in employees %}
+  <div class="table table-responsive-lg table-sm table-hover">
+    <table>
+      <caption>List of employees</caption>
         <tr>
-          <td>{{ emp.eid }}</td>
-          <td>{{ emp.fname }} {{ emp.lname }}</td>
-          <td>{{ emp.c_no }}</td>
-          <td>{{ emp.email }}</td>
-          <td>{{ emp.adhaar }}</td>
-          <td>{{ emp.doj }}</td>
-          <td>{{ emp.blood_group }}</td>
-          <td>{{ emp.dept }}</td>
-          <td>{{ emp.deg }}</td>
-          <td><button>Click</button></td>
+            <th>EID</th>
+            <th>Name</th>
+            <th>Contact No.</th>
+            <th>Email</th>
+            <th>Adhaar card</th>
+            <th>DOJ</th>
+            <th>Blood Group</th>
+            <th>Department</th>
+            <th>Designation</th>
+            <th>action</th>
         </tr>
-      {% endfor %}
-  </table>
+        {% for emp in employees %}
+          <tr>
+            <td>{{ emp.eid }}</td>
+            <td>{{ emp.fname }} {{ emp.lname }}</td>
+            <td>{{ emp.c_no }}</td>
+            <td>{{ emp.email }}</td>
+            <td>{{ emp.adhaar }}</td>
+            <td>{{ emp.doj }}</td>
+            <td>{{ emp.blood_group }}</td>
+            <td>{{ emp.dept }}</td>
+            <td>{{ emp.deg }}</td>
+            <td><button>Click</button></td>
+          </tr>
+        {% endfor %}
+    </table>
+  </div>
 </div>
 {% endblock %}
