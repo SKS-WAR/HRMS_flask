@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 import webbrowser
 from datetime import datetime
+from io import BytesIO
 
 app = Flask(__name__)
 app.secret_key = "0d8fb9370a5bf7b892be4865cdf8b658a82209624e33ed71cae353b0df254a75db63d1baa35ad99f26f1b399c31f3c666a7fc67ecef3bdcdb7d60e8ada90b722"
@@ -128,7 +129,7 @@ def register():
             flash("Logged in successfully",category='success')
             return render_template("registerAdmin.html")
         else:
-            flash("Invalid Email and password",category='error')
+            flash("Invalid Email and password",category='danger')
             return render_template('registerAdmin.html')
     else:
         return render_template("registerAdmin.html")
@@ -184,6 +185,76 @@ def createEmployee():
     else:
         return render_template('createEmployee.html')
     
+@app.route("/updateEmployee",methods=["POST","GET"])
+def updateEmployee():
+    if 'user' in session :
+        pass
+    if request.method == "POST":
+        eid = request.form['eid']
+        fname = request.form['fname']
+        lname = request.form['lname']
+        father_name = request.form['father_name']
+        padrs = request.form['padrs']
+        pcity = request.form['pcity']
+        p_pin = request.form['p_pin']
+        tadrs = request.form['tadrs']
+        tcity = request.form['tcity']
+        t_pin = request.form['t_pin']
+        dob = request.form['dob']
+        c_no = request.form['c_no']
+        email = request.form['email']
+        gender = request.form['gender']
+        dept = request.form['dept']
+        deg = request.form['deg']
+        blood_group = request.form['blood_group']
+        edu_qua = request.form['edu_qua']
+        cert = request.files['cert']
+        ani = request.form['ani']
+        religion = request.form['religion']
+        driving_linc = request.form['driving_linc']
+        voter_id = request.form['voter_id']
+        adhaar = request.form['adhaar']
+        photo = request.files['photo']
+        material_status = request.form['material_status']
+        resume = request.files['resume']
+        doj = request.form['doj']
+        first_employee = employee.query.filter_by(eid = eid).first()
+        first_employee.fname = fname
+        first_employee.lname = lname
+        first_employee.father_name = father_name
+        first_employee.padrs = padrs
+        first_employee.pcity = pcity
+        first_employee.p_pin = p_pin
+        first_employee.tadrs = tadrs
+        first_employee.tcity = tcity
+        first_employee.t_pin = t_pin
+        first_employee.dob = dob
+        first_employee.c_no = c_no
+        first_employee.email = email
+        first_employee.gender = gender
+        first_employee.dept = dept
+        first_employee.deg = deg
+        first_employee.blood_group = blood_group
+        first_employee.edu_qua = edu_qua
+        #first_employee.cert = cert
+        first_employee.ani = ani
+        first_employee.religion = religion
+        first_employee.driving_linc = driving_linc
+        first_employee.voter_id = voter_id
+        first_employee.adhaar = adhaar
+        first_employee.material_status = material_status
+        #first_employee.photo = photo
+        #first_employee.resume = resume
+        first_employee.doj = doj
+        db.session.add(first_employee)
+        db.session.commit()
+        flash("Successfully Updated the Employee",category='success')
+        return render_template('updateEmployee.html',emp=None)
+    else:
+        eid = request.args.get("eid")
+        find_employee = employee.query.filter_by(eid = eid).first()
+        return render_template('updateEmployee.html',emp = find_employee)
+
 @app.route("/viewEmployees",methods=["POST","GET"])
 def viewEmployees():
     return render_template('viewEmployees.html', employees = employee.query.filter_by().all())
@@ -194,7 +265,13 @@ def logout():
     session.pop('user',None)
     return redirect(url_for('login'))
 
-
+@app.route("/downloadResume",methods=["POST","GET"])
+def downloadResume():
+    if request.method == "GET":
+        eid = request.args.get("eid")
+        find_employee = employee.query.filter_by(eid = eid).first()
+        return send_file(BytesIO(find_employee.resume),attachment_filename="resume",as_attachment=True)
+    return f"Well u have reached the downloaad resume page.<br> For better functionality u shouldnt visit here."
 #######################################################################################
 
 if __name__ == "__main__":
