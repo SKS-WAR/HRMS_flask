@@ -255,6 +255,18 @@ def updateEmployee():
         find_employee = employee.query.filter_by(eid = eid).first()
         return render_template('updateEmployee.html',emp = find_employee)
 
+@app.route("/searchEmployee",methods=["POST","GET"])
+def searchEmployee():
+    eid = request.args.get("eid")
+    if eid == None:
+        flash("No Employee's EID entered",category='danger')
+    find_employee = employee.query.filter_by(eid = eid).first()
+    if find_employee == None:
+        flash("No Employee Found",category='danger')
+    else:
+        flash("Employee found",category='success')
+    return render_template('searchEmployee.html',emp = find_employee)
+
 @app.route("/viewEmployees",methods=["POST","GET"])
 def viewEmployees():
     return render_template('viewEmployees.html', employees = employee.query.filter_by().all())
