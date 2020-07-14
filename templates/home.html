@@ -29,10 +29,10 @@
                         Employee
                         <ul>
                             <li><a href="/createEmployee">Create</a></li>
-                            <li><a href="/createEmployee">Search</a></li>
-                            <li><a href="/createEmployee">Update</a></li>
-                            <li><a href="/createEmployee">Delete</a></li>
-                            <li><a href="/createEmployee">View all</a></li>
+                            <li><a href="/searchEmployee">Search</a></li>
+                            <li><a href="/updateEmployee">Update</a></li>
+                            <li><a href="/deleteEmployee">Delete</a></li>
+                            <li><a href="/viewEmployees">View all</a></li>
                         </ul>
                     </div>
                 </li>
@@ -55,13 +55,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <a href="#" class="btn btn-success" id="menu-toggle">Toggle Menu</a>
-                                    {% with messages = get_flashed_messages(with_categories=true) %}
-                                        {% if messages %}
-                                            {% for category,message in messages %}
-                                                <div class="{{ category }}">{{ message }}</div>
-                                            {% endfor %}
-                                        {% endif %}
-                                    {% endwith %}
+                        <br>
+                        <br>
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category,message in messages %}
+                                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
                         <br>
                         {% block content %} {% endblock %}
                     </div>
