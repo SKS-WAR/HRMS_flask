@@ -1,7 +1,12 @@
 {% extends "home.html" %} {% block content %}
-<div class="container">
+<script>
+  function goToSearch(eid) {
+    window.location.href = "http://127.0.0.1:5000/searchEmployee?eid="+eid;
+  }
+  </script>
+<div class="container-fluid">
   <h3>Employee table</h3>
-  <div class="table table-responsive-lg table-sm table-hover">
+  <div class="table table-responsive-lg table-sm table-hover container-fluid">
     <table>
       <caption>List of employees</caption>
         <tr>
@@ -27,7 +32,7 @@
             <td>{{ emp.blood_group }}</td>
             <td>{{ emp.dept }}</td>
             <td>{{ emp.deg }}</td>
-            <td><button>Click</button></td>
+            <td><button onclick="goToSearch({{ emp.eid }})">Check Details</button></td>
           </tr>
         {% endfor %}
     </table>
