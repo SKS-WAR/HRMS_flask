@@ -4,9 +4,12 @@
     <form action="/createEmployee" method="post" class="center" enctype="multipart/form-data">
       <br/>
       <br/>
-      <div class="form-group">
+      <div class="form-group mb-3">
         <label>Employee EID number*</label>
         <input type="number" name="eid" required /><br />
+        <div class="invalid-feedback">
+          Please enter a message in the textarea.
+        </div>
       </div>
 
       <div class="row">
