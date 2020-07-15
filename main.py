@@ -88,7 +88,69 @@ class employee(db.Model):
         self.photo = photo
         self.resume = resume
         self.doj = doj
-        
+
+class ex_employee(db.Model):
+    uid = db.Column(db.Integer,primary_key=True)
+    eid = db.Column(db.Integer)
+    fname = db.Column(db.String(100))
+    lname = db.Column(db.String(100))
+    father_name = db.Column(db.String(100))
+    padrs = db.Column(db.String(100))
+    pcity = db.Column(db.String(100))
+    p_pin = db.Column(db.String(100))
+    tadrs = db.Column(db.String(100))
+    tcity = db.Column(db.String(100))
+    t_pin = db.Column(db.String(100))
+    dob = db.Column(db.String(100))
+    c_no = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    gender = db.Column(db.String(100))
+    dept = db.Column(db.String(100))    
+    deg = db.Column(db.String(100))
+    blood_group = db.Column(db.String(100))
+    edu_qua = db.Column(db.String(100))
+    cert = db.Column(db.LargeBinary)
+    ani = db.Column(db.String(100))
+    religion = db.Column(db.String(100))
+    driving_linc = db.Column(db.String(100))
+    voter_id = db.Column(db.String(100))
+    adhaar = db.Column(db.String(100))
+    material_status = db.Column(db.String(100))
+    photo = db.Column(db.LargeBinary)
+    resume = db.Column(db.LargeBinary)
+    doj = db.Column(db.String(100))
+    def __init__(self,eid,fname,lname,father_name,padrs,pcity,p_pin,tadrs,tcity,t_pin,dob,c_no,email,
+                 gender,dept,deg,blood_group,edu_qua,cert,ani,religion,driving_linc,voter_id,adhaar,
+                 material_status,photo,resume,doj):
+        self.eid = eid
+        self.fname = fname
+        self.lname = lname
+        self.father_name = father_name
+        self.padrs = padrs
+        self.pcity = pcity
+        self.p_pin = p_pin
+        self.tadrs = tadrs
+        self.tcity = tcity
+        self.t_pin = t_pin
+        self.dob = dob
+        self.c_no = c_no
+        self.email = email
+        self.gender = gender
+        self.dept = dept
+        self.deg = deg
+        self.blood_group = blood_group
+        self.edu_qua = edu_qua
+        self.cert = cert
+        self.ani = ani
+        self.religion = religion
+        self.driving_linc = driving_linc
+        self.voter_id = voter_id
+        self.adhaar = adhaar
+        self.material_status = material_status
+        self.photo = photo
+        self.resume = resume
+        self.doj = doj
+
 #########################################################################################
     
 @app.route("/",methods=["POST","GET"])
@@ -208,15 +270,15 @@ def updateEmployee():
         deg = request.form['deg']
         blood_group = request.form['blood_group']
         edu_qua = request.form['edu_qua']
-        cert = request.files['cert']
+        #cert = request.files['cert']
         ani = request.form['ani']
         religion = request.form['religion']
         driving_linc = request.form['driving_linc']
         voter_id = request.form['voter_id']
         adhaar = request.form['adhaar']
-        photo = request.files['photo']
+        #photo = request.files['photo']
         material_status = request.form['material_status']
-        resume = request.files['resume']
+        #resume = request.files['resume']
         doj = request.form['doj']
         first_employee = employee.query.filter_by(eid = eid).first()
         first_employee.fname = fname
@@ -267,6 +329,31 @@ def searchEmployee():
         flash("Employee found",category='success')
     return render_template('searchEmployee.html',emp = find_employee)
 
+@app.route("/deleteEmployee",methods=["POST","GET"])
+def deleteEmployee():
+    if request.method == "POST":
+        eid = request.form['eid']
+        emp = employee.query.filter_by(eid = eid).first()
+        ex_emp = ex_employee(emp.eid, emp.fname, emp.lname, emp.father_name, emp.padrs, emp.pcity, emp.p_pin,
+         emp.tadrs, emp.tcity, emp.t_pin, emp.dob, emp.c_no, emp.email, emp.gender, emp.dept, emp.deg, emp.blood_group,
+          emp.edu_qua, emp.cert, emp.ani, emp.religion, emp.driving_linc, emp.voter_id, emp.adhaar, emp.material_status,
+           emp.photo, emp.resume, emp.doj)
+        employee.query.filter_by(eid = eid).delete()
+        db.session.add(ex_emp)
+        db.session.commit()
+        flash("Successfully Terimated the employee",category="success")
+        return render_template('deleteEmployee.html',emp="None")
+    else:
+        eid = request.args.get("eid")
+        if eid == None:
+            flash("No Employee's EID entered",category='danger')
+        find_employee = employee.query.filter_by(eid = eid).first()
+        if find_employee == None:
+            flash("No Employee Found",category='danger')
+        else:
+            flash("Employee found",category='success')
+        return render_template('deleteEmployee.html',emp = find_employee)
+
 @app.route("/viewEmployees",methods=["POST","GET"])
 def viewEmployees():
     return render_template('viewEmployees.html', employees = employee.query.filter_by().all())
@@ -276,6 +363,20 @@ def logout():
     session.pop('patient',None)
     session.pop('user',None)
     return redirect(url_for('login'))
+
+@app.route("/copytodb")
+def copytodb():
+    try:
+        emp = employee.query.filter_by(uid = 1).first()
+        ex_emp = ex_employee(emp.eid, emp.fname, emp.lname, emp.father_name, emp.padrs, emp.pcity, emp.p_pin,
+         emp.tadrs, emp.tcity, emp.t_pin, emp.dob, emp.c_no, emp.email, emp.gender, emp.dept, emp.deg, emp.blood_group,
+          emp.edu_qua, emp.cert, emp.ani, emp.religion, emp.driving_linc, emp.voter_id, emp.adhaar, emp.material_status,
+           emp.photo, emp.resume, emp.doj)
+        db.session.add(ex_emp)
+        db.session.commit()
+        return f"WORKED"
+    except:
+        return f"didnot work"
 
 @app.route("/downloadResume",methods=["POST","GET"])
 def downloadResume():
