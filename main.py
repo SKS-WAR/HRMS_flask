@@ -151,6 +151,55 @@ class ex_employee(db.Model):
         self.resume = resume
         self.doj = doj
 
+class date_status(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    eid = db.Column(db.Integer)
+    date = db.Column(db.String(100))
+    status = db.Column(db.String(10))
+    def __init__(eid,date,status):
+        self.eid = eid
+        self.date = date
+        self.status = status
+
+class daily_io(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    eid = db.Column(db.Integer)
+    date = db.Column(db.String(100))
+    in_time = db.Column(db.String(100))
+    out_time = db.Column(db.String(100))
+    status = db.Column(db.String(10))
+    def __init__(eid,date,in_time,out_time):
+        self.eid = eid
+        self.date = date
+        self.in_time = in_time
+        self.out_time = out_time
+
+class lunch_io(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    eid = db.Column(db.Integer)
+    date = db.Column(db.String(100))
+    in_time = db.Column(db.String(100))
+    out_time = db.Column(db.String(100))
+    status = db.Column(db.String(10))
+    def __init__(eid,date,in_time,out_time):
+        self.eid = eid
+        self.date = date
+        self.in_time = in_time
+        self.out_time = out_time
+
+class tea_io(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    eid = db.Column(db.Integer)
+    date = db.Column(db.String(100))
+    in_time = db.Column(db.String(100))
+    out_time = db.Column(db.String(100))
+    status = db.Column(db.String(10))
+    def __init__(eid,date,in_time,out_time):
+        self.eid = eid
+        self.date = date
+        self.in_time = in_time
+        self.out_time = out_time
+        
 #########################################################################################
     
 @app.route("/",methods=["POST","GET"])
