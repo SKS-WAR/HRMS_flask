@@ -407,6 +407,23 @@ def deleteEmployee():
 def viewEmployees():
     return render_template('viewEmployees.html', employees = employee.query.filter_by().all())
 
+@app.route("/attendance",methods=["POST","GET"])
+def attendance():
+    if request.method ==  "GET":
+        eid = request.args.get("eid")
+        dt = request.args.get("dt")
+        find_employee = employee.query.filter_by(eid = eid).first()
+        if eid == None:
+            flash("No Employee's EID entered",category='danger')
+        else:
+            if find_employee == None:
+                flash("No Employee Found",category='danger')
+            else:
+                flash("Employee Found",category='success')
+        print(dt)
+        return render_template('attendance.html',emp = find_employee)
+    return render_template('attendance.html', emp = employee.query.filter_by().first())
+
 @app.route("/logout")
 def logout(): 
     session.pop('patient',None)
