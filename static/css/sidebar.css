@@ -16,7 +16,6 @@
 
 #wrapper.menuDisplayed #sidebar-wrapper{
     width: 250px;
-    position: fixed;
 }
 
 #wrapper.menuDisplayed #page-context-wrapper{
