@@ -156,7 +156,7 @@ class date_status(db.Model):
     eid = db.Column(db.Integer)
     date = db.Column(db.String(100))
     status = db.Column(db.String(10))
-    def __init__(eid,date,status):
+    def __init__(self,eid,date,status):
         self.eid = eid
         self.date = date
         self.status = status
@@ -167,8 +167,7 @@ class daily_io(db.Model):
     date = db.Column(db.String(100))
     in_time = db.Column(db.String(100))
     out_time = db.Column(db.String(100))
-    status = db.Column(db.String(10))
-    def __init__(eid,date,in_time,out_time):
+    def __init__(self,eid,date,in_time,out_time):
         self.eid = eid
         self.date = date
         self.in_time = in_time
@@ -180,8 +179,7 @@ class lunch_io(db.Model):
     date = db.Column(db.String(100))
     in_time = db.Column(db.String(100))
     out_time = db.Column(db.String(100))
-    status = db.Column(db.String(10))
-    def __init__(eid,date,in_time,out_time):
+    def __init__(self,eid,date,in_time,out_time):
         self.eid = eid
         self.date = date
         self.in_time = in_time
@@ -193,8 +191,7 @@ class tea_io(db.Model):
     date = db.Column(db.String(100))
     in_time = db.Column(db.String(100))
     out_time = db.Column(db.String(100))
-    status = db.Column(db.String(10))
-    def __init__(eid,date,in_time,out_time):
+    def __init__(self,eid,date,in_time,out_time):
         self.eid = eid
         self.date = date
         self.in_time = in_time
@@ -411,7 +408,7 @@ def viewEmployees():
 def attendance():
     if request.method ==  "GET":
         eid = request.args.get("eid")
-        dt = request.args.get("dt")
+        dt = request.args.get("date")
         find_employee = employee.query.filter_by(eid = eid).first()
         if eid == None:
             flash("No Employee's EID entered",category='danger')
@@ -422,7 +419,74 @@ def attendance():
                 flash("Employee Found",category='success')
         print(dt)
         return render_template('attendance.html',emp = find_employee)
-    return render_template('attendance.html', emp = employee.query.filter_by().first())
+    else:
+
+        eid = request.form['eid']
+        date = request.form['date']
+
+        #if not in database create new
+        
+        #else update the existing
+        existing_date_details = date_status.query.filter_by(eid = eid,date=date).first()
+        if existing_date_details != None:
+            
+
+            existing_date_status = date_status.query.filter_by(eid = eid,date=date).first()
+            status = request.form['status']
+            existing_date_status.status = status
+            db.session.add(existing_date_status)
+
+            existing_daily_io = daily_io.query.filter_by(eid = eid,date=date).first()
+            in_time = request.form['in_time']
+            out_time = request.form['out_time']
+            existing_daily_io.in_time = in_time
+            existing_daily_io.out_time = out_time
+            db.session.add(existing_daily_io)
+
+            existing_lunch_io = lunch_io.query.filter_by(eid = eid,date=date).first()
+            lunch_in_time = request.form['lunch_in_time']
+            lunch_out_time = request.form['lunch_out_time']
+            existing_lunch_io.in_time = lunch_in_time
+            existing_lunch_io.out_time = lunch_out_time
+            db.session.add(existing_lunch_io)
+
+            existing_tea_io = tea_io.query.filter_by(eid = eid,date=date).first()
+            tea_in_time = request.form['tea_in_time']
+            tea_out_time = request.form['tea_out_time']
+            existing_tea_io.in_time = tea_in_time
+            existing_tea_io.out_time = tea_out_time
+            db.session.add(existing_tea_io)
+
+            db.session.commit()
+            flash("Updated successfully",category='success')
+        
+        else:
+
+            status = request.form['status']
+
+            new_date_status = date_status(eid,date,status)
+            db.session.add(new_date_status)
+
+            in_time = request.form['in_time']
+            out_time = request.form['out_time']
+            new_daily_io = daily_io(eid,date,in_time,out_time)
+            db.session.add(new_daily_io)
+
+            lunch_in_time = request.form['lunch_in_time']
+            lunch_out_time = request.form['lunch_out_time']
+            new_lunch_io = lunch_io(eid,date,lunch_in_time,lunch_out_time)
+            db.session.add(new_lunch_io)
+
+            tea_in_time = request.form['tea_in_time']
+            tea_out_time = request.form['tea_out_time']
+            new_tea_io = tea_io(eid,date,tea_in_time,tea_out_time)
+            db.session.add(new_tea_io)
+
+            db.session.commit()
+
+            flash("Created successfully",category='success')
+
+        return render_template('attendance.html', emp = employee.query.filter_by().first())
 
 @app.route("/logout")
 def logout(): 
