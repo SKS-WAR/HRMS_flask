@@ -15,23 +15,23 @@
         <span class="input-group-text">UID and Date</span>
       </div>
       <input type="number" class="form-control" id="eid" name="eid" value="{{ emp.eid }}">
-      <input class = "form-control" id="date" type="date">
+      <input class = "form-control" id="date" name="date" type="date">
         <div class="input-group-append">
             <button class="btn btn-outline-info" type="button" id="button-addon2" onclick="getInputValue();">Search</button>
         </div>
     </div>
     <div class="row container m-lg-2">
-        <input type="text" id="" placeholder="Enter the type of day" class="form-control">    
+        <input type="text" id="status" name="status" placeholder="Enter the type of day" class="form-control">    
     </div>
     <div class="border border-dark p-lg-4 rounded m-lg-2">
         <div class="row">
             <div class="col">
                 <label>Today In Time :</label>
-                <input type="text" placeholder="HH-MM AM/PM" class="form-control">
+                <input type="text" id="in_time" name="in_time" placeholder="HH-MM AM/PM" class="form-control">
             </div>
             <div class="col">
                 <label>Today Out Time :</label>
-                <input type="text" placeholder="HH-MM AM/PM" class="form-control">
+                <input type="text" id="out_time" name="out_time" placeholder="HH-MM AM/PM" class="form-control">
             </div>
         </div>
     </div>
@@ -39,11 +39,11 @@
         <div class="row">
             <div class="col">
                 <label>Lunch Time out :</label>
-                <input type="text" placeholder="HH-MM AM/PM" class="form-control">
+                <input type="text" id="lunch_out_time" name="lunch_out_time" placeholder="HH-MM AM/PM" class="form-control">
             </div>
             <div class="col">
                 <label>Lunch Time In :</label>
-                <input type="text" placeholder="HH-MM AM/PM" class="form-control">
+                <input type="text" id="lunch_in_time" name="lunch_in_time" placeholder="HH-MM AM/PM" class="form-control">
             </div>
         </div>
     </div>
@@ -51,11 +51,11 @@
         <div class="row">
             <div class="col">
                 <label>Tea Out Time :</label>
-                <input type="text" placeholder="HH-MM AM/PM" class="form-control">
+                <input type="text" id="tea_out_time" name="tea_out_time" placeholder="HH-MM AM/PM" class="form-control">
             </div>
             <div class="col">
                 <label>Tea In Time :</label>
-                <input type="text" placeholder="HH-MM AM/PM" class="form-control">
+                <input type="text" id="tea_in_time" name="tea_in_time" placeholder="HH-MM AM/PM" class="form-control">
             </div>
         </div>
     </div>
